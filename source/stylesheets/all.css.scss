@@ -1,8 +1,15 @@
 @charset "utf-8";
 @import 'base';
 
+
+.slideshow-container, .slideshow, .slide, img {
+  height: auto;
+  max-height: 500px;
+}
+
 .slide {
   display: none;
+  width: auto;
 
   &.active {
     display: block;
