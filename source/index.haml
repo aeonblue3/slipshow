@@ -4,9 +4,13 @@ title: New Coffee Slideshow
 
 .container
   .row
-    .span-12.panel
+    .span-12
+      %h1.center
+        Coffee Slideshow
+  .row
+    .span-12
       .slideshow-container.centered
-        .slideshow
+        .slideshow.panel
           .slide.active
             = image_tag "sunface.jpg"
           .slide
@@ -17,12 +21,12 @@ title: New Coffee Slideshow
             = image_tag "skeptic-face.jpg"
   .slideshow-controls
     .row
-      .span-4.tablet-span-2.mobile-span-1
+      .span-4.tablet-span-4.mobile-span-4
         %a.prev{href: "#"}
           %i.icon-backward
-      .span-4.tablet-span-2.mobile-span-2.center
+      .span-4.tablet-span-4.mobile-span-4.center
         %a.pause{href: "#"}
           %i.icon-pause
-      .span-4.tablet-span-2.mobile-span-1
+      .span-4.tablet-span-4.mobile-span-4
         %a.next.right{href: "#"}
           %i.icon-forward-2

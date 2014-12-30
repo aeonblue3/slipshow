@@ -1,17 +1,32 @@
 @charset "utf-8";
 @import 'base';
 
+body {
+  background: transparent url(image-path('background.png')) repeat top left;
+}
 
-.slideshow-container, .slideshow, .slide, img {
+.panel {
+  padding: 25px;
+}
+.slideshow-container, .slideshow, .slide {
   height: auto;
-  max-height: 500px;
 }
 
 .slide {
   display: none;
   width: auto;
 
+  img {
+    max-height: 500px;
+  }
+
   &.active {
     display: block;
+  }
+}
+
+i {
+  &[class*="icon"] {
+    font-size: 4em;
   }
 }
