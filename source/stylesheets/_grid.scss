@@ -1,0 +1,158 @@
+@for $i from 1 through $default-columns {
+  .span-#{$i} {
+    @include span-columns($i);
+    @if $reset_grid_at_breakpoint {
+      @include tablet {
+        @include span-columns($default-columns);
+      }
+      @include mobile {
+        @include span-columns($default-columns);
+      }
+    }
+  }
+  .row .row .span-#{$i} {
+    @if $i == $default-columns {
+      width: 100%;
+    } @else {
+      @include nested-span-columns($i);
+      @include tablet {
+        width: 100%;
+        margin-left:0;
+        margin-right:0;
+      }
+      @include mobile {
+        width: 100%;
+        margin-left:0;
+        margin-right:0;
+      }
+    }
+  }
+  @if $i != $default-columns {
+    .push-#{$i}, .row .push-#{$i} {
+      position: relative;
+      @include push($i);
+      @if $reset_grid_at_breakpoint {
+        @include tablet {
+          left: 0;
+        }
+      }
+    }
+    .pull-#{$i}, .row .pull-#{$i} {
+      position: relative;
+      @include pull($i);
+      @if $reset_grid_at_breakpoint {
+        @include tablet {
+          right: 0;
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  @for $i from 1 through $default-columns {
+    .tablet-span-#{$i} {
+      @include span-columns($i);
+    }
+    .row .row .tablet-span-#{$i} {
+      @include nested-span-columns($i);
+    }
+    .tablet-offset-#{$i}, .row .tablet-offset-#{$i} {
+      @include offset-columns($i);
+    }
+    .row .row .tablet-span-#{$i} {
+      width: calculateNestedColumnWidth($i);
+    }
+    @if $i != $default-columns {
+      .tablet-push-#{$i}, .row .tablet-push-#{$i} {
+        position: relative;
+        @include push($i);
+      }
+      .tablet-pull-#{$i}, .row .tablet-pull-#{$i} {
+        position: relative;
+        @include pull($i);
+      }
+    }
+  }
+}
+
+@include mobile {
+  @if $reset_grid_at_breakpoint {
+    @for $i from 1 through $tablet-columns {
+      .tablet-span-#{$i}, .row .row .tablet-span-#{$i}{
+        @include span-columns($default-columns);
+      }
+      .tablet-push-#{$i}, .row .tablet-push-#{$i} {
+        left: 0;
+      }
+      .tablet-pull-#{$i}, .row .tablet-pull-#{$i} {
+        right: 0;
+      }
+    }
+  }
+  @for $i from 1 through $default-columns {
+    .mobile-span-#{$i} {
+      @include span-columns($i);
+    }
+    .row .row .mobile-span-#{$i} {
+      width: calculateNestedColumnWidth($i);
+    }
+    .mobile-offset-#{$i} {
+      @include offset-columns($i);
+    }
+    @if $i != $default-columns {
+      .mobile-push-#{$i}, .row .mobile-push-#{$i} {
+        position: relative;
+        @include push($i);
+      }
+      .mobile-pull-#{$i}, .row .mobile-pull-#{$i} {
+        position: relative;
+        @include pull($i);
+      }
+    }
+  }
+}
+
+@for $i from 1 through $default-columns {
+  .offset-#{$i}, .row .row .offset-#{$i} {
+    @include offset-columns($i);
+    @if $reset_grid_at_breakpoint {
+      @include tablet {
+        margin-left: gutterCalc() / 2;
+        margin-right: gutterCalc() / 2;
+        #margin-left:-1em;
+      }
+      @include mobile {
+        margin-left: gutterCalc() / 2;
+        margin-right: gutterCalc() / 2;
+        #margin-left:-1em;
+      }
+    }
+  }
+}
+
+@include tablet {
+  @for $i from 1 through $tablet-columns {
+    .tablet-offset-#{$i}, .row .tablet-offset-#{$i} {
+      @include offset-columns($i);
+    }
+  }
+}
+
+@include mobile {
+  @if $reset_grid_at_breakpoint {
+    @for $i from 1 through $tablet-columns {
+      .tablet-offset-#{$i}, .row .tablet-offset-#{$i} {
+        margin-left: gutterCalc() / 2;
+        margin-right: gutterCalc() / 2;
+        #margin-left:-1em;
+      }
+    }
+  }
+
+  @for $i from 1 through $default-columns {
+    .mobile-offset-#{$i}, .row .mobile-offset-#{$i} {
+      @include offset-columns($i);
+    }
+  }
+}

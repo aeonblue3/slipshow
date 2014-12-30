@@ -1,0 +1,208 @@
+$fontPath:   "../fonts" !default;
+$borderColor:       #eee;
+$iconMuted:         #eee;
+@font-face {
+  font-family: 'icomoon-ultimate';
+  src: url('#{$fontPath}/icomoon-ultimate.eot?v=3.0.1');
+  src: url('#{$fontPath}/icomoon-ultimate.eot?#iefix&v=3.0.1') format("embedded-opentype"),
+    url('#{$fontPath}/icomoon-ultimate.woff?v=3.0.1') format("woff"),
+    url('#{$fontPath}/icomoon-ultimate.ttf?v=3.0.1') format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*  IcoMoon styles
+    ------------------------------------------------------- */
+// .icon-home, .icon-home-2, .icon-home-3, .icon-home-4, .icon-home-5, .icon-home-6, .icon-home-7, .icon-home-8, .icon-home-9, .icon-home-10, .icon-home-11, .icon-office, .icon-newspaper, .icon-pencil, .icon-pencil-2, .icon-pencil-3, .icon-pencil-4, .icon-pencil-5, .icon-pencil-6, .icon-quill, .icon-quill-2, .icon-quill-3, .icon-pen, .icon-pen-2, .icon-pen-3, .icon-pen-4, .icon-pen-5, .icon-marker, .icon-home-12, .icon-marker-2, .icon-blog, .icon-blog-2, .icon-brush, .icon-palette, .icon-palette-2, .icon-eyedropper, .icon-eyedropper-2, .icon-droplet, .icon-droplet-2, .icon-droplet-3, .icon-droplet-4, .icon-paint-format, .icon-paint-format-2, .icon-image, .icon-image-2, .icon-image-3, .icon-images, .icon-image-4, .icon-image-5, .icon-image-6, .icon-images-2, .icon-image-7, .icon-camera, .icon-camera-2, .icon-camera-3, .icon-camera-4, .icon-music, .icon-music-2, .icon-music-3, .icon-music-4, .icon-music-5, .icon-music-6, .icon-piano, .icon-guitar, .icon-headphones, .icon-headphones-2, .icon-play, .icon-play-2, .icon-movie, .icon-movie-2, .icon-movie-3, .icon-film, .icon-film-2, .icon-film-3, .icon-film-4, .icon-camera-5, .icon-camera-6, .icon-camera-7, .icon-camera-8, .icon-camera-9, .icon-dice, .icon-gamepad, .icon-gamepad-2, .icon-gamepad-3, .icon-pacman, .icon-spades, .icon-clubs, .icon-diamonds, .icon-king, .icon-queen, .icon-rock, .icon-bishop, .icon-knight, .icon-pawn, .icon-chess, .icon-bullhorn, .icon-megaphone, .icon-new, .icon-connection, .icon-connection-2, .icon-podcast, .icon-radio, .icon-feed, .icon-connection-3, .icon-radio-2, .icon-podcast-2, .icon-podcast-3, .icon-mic, .icon-mic-2, .icon-mic-3, .icon-mic-4, .icon-mic-5, .icon-book, .icon-book-2, .icon-books, .icon-reading, .icon-library, .icon-library-2, .icon-graduation, .icon-file, .icon-profile, .icon-file-2, .icon-file-3, .icon-file-4, .icon-file-5, .icon-file-6, .icon-files, .icon-file-plus, .icon-file-minus, .icon-file-download, .icon-file-upload, .icon-file-check, .icon-file-remove, .icon-file-7, .icon-file-8, .icon-file-plus-2, .icon-file-minus-2, .icon-file-download-2, .icon-file-upload-2, .icon-file-check-2, .icon-file-remove-2, .icon-file-9, .icon-copy, .icon-copy-2, .icon-copy-3, .icon-copy-4, .icon-paste, .icon-paste-2, .icon-paste-3, .icon-stack, .icon-stack-2, .icon-stack-3, .icon-folder, .icon-folder-download, .icon-folder-upload, .icon-folder-plus, .icon-folder-plus-2, .icon-folder-minus, .icon-folder-minus-2, .icon-folder8, .icon-folder-remove, .icon-folder-2, .icon-folder-open, .icon-folder-3, .icon-folder-4, .icon-folder-plus-3, .icon-folder-minus-3, .icon-folder-plus-4, .icon-folder-remove-2, .icon-folder-download-2, .icon-folder-upload-2, .icon-folder-download-3, .icon-folder-upload-3, .icon-folder-5, .icon-folder-open-2, .icon-folder-6, .icon-folder-open-3, .icon-certificate, .icon-cc, .icon-tag, .icon-tag-2, .icon-tag-3, .icon-tag-4, .icon-tag-5, .icon-tag-6, .icon-tag-7, .icon-tags, .icon-tags-2, .icon-tag-8, .icon-barcode, .icon-barcode-2, .icon-qrcode, .icon-ticket, .icon-cart, .icon-cart-2, .icon-cart-3, .icon-cart-4, .icon-cart-5, .icon-cart-6, .icon-cart-7, .icon-cart-plus, .icon-cart-minus, .icon-cart-add, .icon-cart-remove, .icon-cart-checkout, .icon-cart-remove-2, .icon-basket, .icon-basket-2, .icon-bag, .icon-bag-2, .icon-bag-3, .icon-coin, .icon-coins, .icon-credit, .icon-credit-2, .icon-calculate, .icon-calculate-2, .icon-support, .icon-phone, .icon-phone-2, .icon-phone-3, .icon-phone-4, .icon-contact-add, .icon-contact-remove, .icon-contact-add-2, .icon-contact-remove-2, .icon-call-incoming, .icon-call-outgoing, .icon-phone-5, .icon-phone-6, .icon-phone-hang-up, .icon-phone-hang-up-2, .icon-address-book, .icon-address-book-2, .icon-notebook, .icon-envelop, .icon-envelop-2, .icon-mail-send, .icon-envelop-opened, .icon-envelop-3, .icon-pushpin, .icon-location, .icon-location-2, .icon-location-3, .icon-location-4, .icon-location-5, .icon-location-6, .icon-location-7, .icon-compass, .icon-compass-2, .icon-map, .icon-map-2, .icon-map-3, .icon-map-4, .icon-direction, .icon-history, .icon-history-2, .icon-clock, .icon-clock-2, .icon-clock-3, .icon-clock-4, .icon-watch, .icon-clock-5, .icon-clock-6, .icon-clock-7, .icon-alarm, .icon-alarm-2, .icon-bell, .icon-bell-2, .icon-alarm-plus, .icon-alarm-minus, .icon-alarm-check, .icon-alarm-cancel, .icon-stopwatch, .icon-calendar, .icon-calendar-2, .icon-calendar-3, .icon-calendar-4, .icon-calendar-5, .icon-print, .icon-print-2, .icon-print-3, .icon-mouse, .icon-mouse-2, .icon-mouse-3, .icon-mouse-4, .icon-keyboard, .icon-keyboard-2, .icon-screen, .icon-screen-2, .icon-screen-3, .icon-screen-4, .icon-laptop, .icon-mobile, .icon-mobile-2, .icon-tablet, .icon-mobile-3, .icon-tv, .icon-cabinet, .icon-archive, .icon-drawer, .icon-drawer-2, .icon-drawer-3, .icon-box, .icon-box-add, .icon-box-remove, .icon-download, .icon-upload, .icon-disk, .icon-cd, .icon-storage, .icon-storage-2, .icon-database, .icon-database-2, .icon-database-3, .icon-undo, .icon-redo, .icon-rotate, .icon-rotate-2, .icon-flip, .icon-flip-2, .icon-unite, .icon-subtract, .icon-interset, .icon-exclude, .icon-align-left, .icon-align-center-horizontal, .icon-align-right, .icon-align-top, .icon-align-center-vertical, .icon-align-bottom, .icon-undo-2, .icon-redo-2, .icon-forward, .icon-reply, .icon-reply-2, .icon-bubble, .icon-bubbles, .icon-bubbles-2, .icon-bubble-2, .icon-bubbles-3, .icon-bubbles-4, .icon-bubble-notification, .icon-bubbles-5, .icon-bubbles-6, .icon-bubble-3, .icon-bubble-dots, .icon-bubble-4, .icon-bubble-5, .icon-bubble-dots-2, .icon-bubble-6, .icon-bubble-7, .icon-bubble-8, .icon-bubbles-7, .icon-bubble-9, .icon-bubbles-8, .icon-bubble-10, .icon-bubble-dots-3, .icon-bubble-11, .icon-bubble-12, .icon-bubble-dots-4, .icon-bubble-13, .icon-bubbles-9, .icon-bubbles-10, .icon-bubble-blocked, .icon-bubble-quote, .icon-bubble-user, .icon-bubble-check, .icon-bubble-video-chat, .icon-bubble-link, .icon-bubble-locked, .icon-bubble-star, .icon-bubble-heart, .icon-bubble-paperclip, .icon-bubble-cancel, .icon-bubble-plus, .icon-bubble-minus, .icon-bubble-notification-2, .icon-bubble-trash, .icon-bubble-left, .icon-bubble-right, .icon-bubble-up, .icon-bubble-down, .icon-bubble-first, .icon-bubble-last, .icon-bubble-replu, .icon-bubble-forward, .icon-bubble-reply, .icon-bubble-forward-2, .icon-user, .icon-users, .icon-user-plus, .icon-user-plus-2, .icon-user-minus, .icon-user-minus-2, .icon-user-cancel, .icon-user-block, .icon-users-2, .icon-user-2, .icon-users-3, .icon-user-plus-3, .icon-user-minus-3, .icon-user-cancel-2, .icon-user-block-2, .icon-user-3, .icon-user-4, .icon-user-5, .icon-user-6, .icon-users-4, .icon-user-7, .icon-user-8, .icon-users-5, .icon-vcard, .icon-tshirt, .icon-hanger, .icon-quotes-left, .icon-quotes-right, .icon-quotes-right-2, .icon-quotes-right-3, .icon-busy, .icon-busy-2, .icon-busy-3, .icon-busy-4, .icon-spinner, .icon-spinner-2, .icon-spinner-3, .icon-spinner-4, .icon-spinner-5, .icon-spinner-6, .icon-spinner-7, .icon-spinner-8, .icon-spinner-9, .icon-spinner-10, .icon-spinner-11, .icon-spinner-12, .icon-microscope, .icon-binoculars, .icon-binoculars-2, .icon-search, .icon-search-2, .icon-zoom-in, .icon-zoom-out, .icon-search-3, .icon-search-4, .icon-zoom-in-2, .icon-zoom-out-2, .icon-search-5, .icon-expand, .icon-contract, .icon-scale-up, .icon-scale-down, .icon-expand-2, .icon-contract-2, .icon-scale-up-2, .icon-scale-down-2, .icon-fullscreen, .icon-expand-3, .icon-contract-3, .icon-key, .icon-key-2, .icon-key-3, .icon-key-4, .icon-key-5, .icon-keyhole, .icon-lock, .icon-lock-2, .icon-lock-3, .icon-lock-4, .icon-unlocked, .icon-lock-5, .icon-unlocked-2, .icon-wrench, .icon-wrench-2, .icon-wrench-3, .icon-wrench-4, .icon-settings, .icon-equalizer, .icon-equalizer-2, .icon-equalizer-3, .icon-cog, .icon-cogs, .icon-cog-2, .icon-cog-3, .icon-cog-4, .icon-cog-5, .icon-cog-6, .icon-cog-7, .icon-factory, .icon-hammer, .icon-tools, .icon-screwdriver, .icon-screwdriver-2, .icon-wand, .icon-wand-2, .icon-health, .icon-aid, .icon-patch, .icon-bug, .icon-bug-2, .icon-inject, .icon-inject-2, .icon-construction, .icon-cone, .icon-pie, .icon-pie-2, .icon-pie-3, .icon-pie-4, .icon-pie-5, .icon-pie-6, .icon-pie-7, .icon-stats, .icon-stats-2, .icon-stats-3, .icon-bars, .icon-bars-2, .icon-bars-3, .icon-bars-4, .icon-bars-5, .icon-bars-6, .icon-stats-up, .icon-stats-down, .icon-stairs-down, .icon-stairs-down-2, .icon-chart, .icon-stairs, .icon-stairs-2, .icon-ladder, .icon-cake, .icon-gift, .icon-gift-2, .icon-balloon, .icon-rating, .icon-rating-2, .icon-rating-3, .icon-podium, .icon-medal, .icon-medal-2, .icon-medal-3, .icon-medal-4, .icon-medal-5, .icon-crown, .icon-trophy, .icon-trophy-2, .icon-trophy-star, .icon-diamond, .icon-diamond-2, .icon-glass, .icon-glass-2, .icon-bottle, .icon-bottle-2, .icon-mug, .icon-food, .icon-food-2, .icon-hamburger, .icon-cup, .icon-cup-2, .icon-leaf, .icon-leaf-2, .icon-apple-fruit, .icon-tree, .icon-tree-2, .icon-paw, .icon-steps, .icon-flower, .icon-rocket, .icon-meter, .icon-meter2, .icon-meter-slow, .icon-meter-medium, .icon-meter-fast, .icon-dashboard, .icon-hammer-2, .icon-balance, .icon-bomb, .icon-fire, .icon-fire-2, .icon-lab, .icon-atom, .icon-atom-2, .icon-magnet, .icon-magnet-2, .icon-magnet-3, .icon-magnet-4, .icon-dumbbell, .icon-skull, .icon-skull-2, .icon-skull-3, .icon-lamp, .icon-lamp-2, .icon-lamp-3, .icon-lamp-4, .icon-remove, .icon-remove-2, .icon-remove-3, .icon-remove-4, .icon-remove-5, .icon-remove-6, .icon-remove-7, .icon-remove-8, .icon-briefcase, .icon-briefcase-2, .icon-briefcase-3, .icon-airplane, .icon-airplane-2, .icon-paper-plane, .icon-car, .icon-gas-pump, .icon-bus, .icon-truck, .icon-bike, .icon-road, .icon-train, .icon-ship, .icon-boat, .icon-cube, .icon-cube-2, .icon-cube-3, .icon-cube4, .icon-pyramid, .icon-pyramid-2, .icon-cylinder, .icon-package, .icon-puzzle, .icon-puzzle-2, .icon-puzzle-3, .icon-puzzle-4, .icon-glasses, .icon-glasses-2, .icon-glasses-3, .icon-sun-glasses, .icon-accessibility, .icon-accessibility-2, .icon-brain, .icon-target, .icon-target-2, .icon-target-3, .icon-gun, .icon-gun-ban, .icon-shield, .icon-shield-2, .icon-shield-3, .icon-shield-4, .icon-soccer, .icon-football, .icon-baseball, .icon-basketball, .icon-golf, .icon-hockey, .icon-racing, .icon-eight-ball, .icon-bowling-ball, .icon-bowling, .icon-bowling-2, .icon-lightning, .icon-power, .icon-power-2, .icon-switch, .icon-power-cord, .icon-cord, .icon-socket, .icon-clipboard, .icon-clipboard-2, .icon-signup, .icon-clipboard-3, .icon-clipboard-4, .icon-list, .icon-list-2, .icon-list-3, .icon-numbered-list, .icon-list-4, .icon-list-5, .icon-playlist, .icon-grid, .icon-grid-2, .icon-grid-3, .icon-grid-4, .icon-grid-5, .icon-grid-6, .icon-tree-3, .icon-tree-4, .icon-tree-5, .icon-menu, .icon-menu-2, .icon-circle-small, .icon-menu-3, .icon-menu-4, .icon-menu-5, .icon-menu-6, .icon-menu-7, .icon-menu-8, .icon-menu-9, .icon-cloud, .icon-cloud-2, .icon-cloud-3, .icon-cloud-download, .icon-cloud-upload, .icon-download-2, .icon-upload-2, .icon-download-3, .icon-upload-3, .icon-download-4, .icon-upload-4, .icon-download-5, .icon-upload-5, .icon-download-6, .icon-upload-6, .icon-download-7, .icon-upload-7, .icon-globe, .icon-globe-2, .icon-globe-3, .icon-earth, .icon-network, .icon-link, .icon-link-2, .icon-link-3, .icon-link2, .icon-link-4, .icon-link-5, .icon-link-6, .icon-anchor, .icon-flag, .icon-flag-2, .icon-flag-3, .icon-flag-4, .icon-flag-5, .icon-flag-6, .icon-attachment, .icon-attachment-2, .icon-eye, .icon-eye-blocked, .icon-eye-2, .icon-eye-3, .icon-eye-blocked-2, .icon-eye-4, .icon-eye-5, .icon-eye-6, .icon-eye-7, .icon-eye-8, .icon-bookmark, .icon-bookmark-2, .icon-bookmarks, .icon-bookmark-3, .icon-spotlight, .icon-starburst, .icon-snowflake, .icon-temperature, .icon-temperature-2, .icon-weather-lightning, .icon-weather-rain, .icon-weather-snow, .icon-windy, .icon-fan, .icon-umbrella, .icon-sun, .icon-sun-2, .icon-brightness-high, .icon-brightness-medium, .icon-brightness-low, .icon-brightness-contrast, .icon-contrast, .icon-moon, .icon-bed, .icon-bed-2, .icon-star, .icon-star-2, .icon-star-3, .icon-star-4, .icon-star-5, .icon-star-6, .icon-heart, .icon-heart-2, .icon-heart-3, .icon-heart-4, .icon-heart-broken, .icon-heart-5, .icon-heart-6, .icon-heart-broken-2, .icon-heart-7, .icon-heart-8, .icon-heart-broken-3, .icon-lips, .icon-lips-2, .icon-thumbs-up, .icon-thumbs-up-2, .icon-thumbs-down, .icon-thumbs-down-2, .icon-thumbs-up-3, .icon-thumbs-up-4, .icon-thumbs-up-5, .icon-thumbs-up-6, .icon-people, .icon-man, .icon-male, .icon-woman, .icon-female, .icon-peace, .icon-yin-yang, .icon-happy, .icon-happy-2, .icon-smiley, .icon-smiley-2, .icon-tongue, .icon-tongue-2, .icon-sad, .icon-sad-2, .icon-wink, .icon-wink-2, .icon-grin, .icon-grin-2, .icon-cool, .icon-cool-2, .icon-angry, .icon-angry-2, .icon-evil, .icon-evil-2, .icon-shocked, .icon-shocked-2, .icon-confused, .icon-confused-2, .icon-neutral, .icon-neutral-2, .icon-wondering, .icon-wondering-2, .icon-cursor, .icon-cursor-2, .icon-point-up, .icon-point-right, .icon-point-down, .icon-point-left, .icon-pointer, .icon-hand, .icon-stack-empty, .icon-stack-plus, .icon-stack-minus, .icon-stack-star, .icon-stack-picture, .icon-stack-down, .icon-stack-up, .icon-stack-cancel, .icon-stack-checkmark, .icon-stack-list, .icon-stack-clubs, .icon-stack-spades, .icon-stack-hearts, .icon-stack-diamonds, .icon-stack-user, .icon-stack-4, .icon-stack-music, .icon-stack-play, .icon-move, .icon-resize, .icon-resize-2, .icon-warning, .icon-warning-2, .icon-notification, .icon-notification-2, .icon-question, .icon-question-2, .icon-question-3, .icon-question-4, .icon-question-5, .icon-plus-circle, .icon-plus-circle-2, .icon-minus-circle, .icon-minus-circle-2, .icon-info, .icon-info-2, .icon-blocked, .icon-cancel-circle, .icon-cancel-circle-2, .icon-checkmark-circle, .icon-checkmark-circle-2, .icon-cancel, .icon-spam, .icon-close, .icon-close-2, .icon-close-3, .icon-close-4, .icon-close-5, .icon-checkmark, .icon-checkmark-2, .icon-checkmark-3, .icon-checkmark-4, .icon-spell-check, .icon-minus, .icon-plus, .icon-minus-2, .icon-plus-2, .icon-enter, .icon-exit, .icon-enter-2, .icon-exit-2, .icon-enter-3, .icon-exit-3, .icon-exit-4, .icon-play-3, .icon-pause, .icon-stop, .icon-backward, .icon-forward-2, .icon-play-4, .icon-pause-2, .icon-stop-2, .icon-backward-2, .icon-forward-3, .icon-first, .icon-last, .icon-previous, .icon-next, .icon-eject, .icon-volume-high, .icon-volume-medium, .icon-volume-low, .icon-volume-mute, .icon-volume-mute-2, .icon-volume-increase, .icon-volume-decrease, .icon-volume-high-2, .icon-volume-medium-2, .icon-volume-low-2, .icon-volume-mute-3, .icon-volume-mute-4, .icon-volume-increase-2, .icon-volume-decrease-2, .icon-volume5, .icon-volume4, .icon-volume3, .icon-volume2, .icon-volume1, .icon-volume0, .icon-volume-mute-5, .icon-volume-mute-6, .icon-loop, .icon-loop-2, .icon-loop-3, .icon-loop-4, .icon-loop-5, .icon-shuffle, .icon-shuffle-2, .icon-wave, .icon-wave-2, .icon-arrow-first, .icon-arrow-right, .icon-arrow-up, .icon-arrow-right-2, .icon-arrow-down, .icon-arrow-left, .icon-arrow-up-2, .icon-arrow-right-3, .icon-arrow-down-2, .icon-arrow-left-2, .icon-arrow-up-left, .icon-arrow-up-3, .icon-arrow-up-right, .icon-arrow-right-4, .icon-arrow-down-right, .icon-arrow-down-3, .icon-arrow-down-left, .icon-arrow-left-3, .icon-arrow-up-left-2, .icon-arrow-up-4, .icon-arrow-up-right-2, .icon-arrow-right-5, .icon-arrow-down-left-2, .icon-arrow-left-4, .icon-arrow-up-left-3, .icon-arrow-up-5, .icon-arrow-up-right-3, .icon-arrow-right-6, .icon-arrow-down-right-2, .icon-arrow-down-4, .icon-arrow-down-left-3, .icon-arrow-left-5, .icon-arrow-up-left-4, .icon-arrow-up-6, .icon-arrow-up-right-4, .icon-arrow-right-7, .icon-arrow-down-right-3, .icon-arrow-down-5, .icon-arrow-down-left-4, .icon-arrow-left-6, .icon-arrow, .icon-arrow-2, .icon-arrow-3, .icon-arrow-4, .icon-arrow-5, .icon-arrow-6, .icon-arrow-up-left-5, .icon-arrow-square, .icon-arrow-up-right-5, .icon-arrow-right-8, .icon-arrow-down-right-4, .icon-arrow-down-6, .icon-arrow-down-left-5, .icon-arrow-left-7, .icon-arrow-up-7, .icon-arrow-right-9, .icon-arrow-down-7, .icon-arrow-left-8, .icon-arrow-up-8, .icon-arrow-right-10, .icon-arrow-up-left-6, .icon-arrow-up-9, .icon-arrow-up-right-6, .icon-arrow-right-11, .icon-arrow-down-right-5, .icon-arrow-down-8, .icon-arrow-down-left-6, .icon-arrow-left-9, .icon-arrow-up-left-7, .icon-arrow-up-10, .icon-arrow-up-right-7, .icon-arrow-right-12, .icon-arrow-down-right-6, .icon-arrow-down-9, .icon-arrow-down-left-7, .icon-arrow-left-10, .icon-arrow-up-11, .icon-arrow-right-13, .icon-arrow-down-10, .icon-arrow-right-14, .icon-arrow-down-11, .icon-arrow-left-11, .icon-arrow-up-12, .icon-arrow-right-15, .icon-arrow-down-12, .icon-arrow-left-12, .icon-arrow-up-13, .icon-arrow-right-16, .icon-arrow-down-13, .icon-arrow-left-13, .icon-arrow-up-14, .icon-arrow-right-17, .icon-arrow-down-14, .icon-arrow-left-14, .icon-arrow-up-15, .icon-arrow-right-18, .icon-arrow-down-15, .icon-arrow-left-15, .icon-menu-close, .icon-menu-close-2, .icon-enter-4, .icon-enter-5, .icon-esc, .icon-backspace, .icon-backspace-2, .icon-backspace-3, .icon-tab, .icon-transmission, .icon-transmission-2, .icon-sort, .icon-sort-2, .icon-key-keyboard, .icon-key-A, .icon-key-up, .icon-key-right, .icon-key-down, .icon-key-left, .icon-checkbox-unchecked, .icon-square, .icon-checkbox-partial, .icon-checkbox, .icon-checkbox-unchecked-2, .icon-checkbox-partial-2, .icon-checkbox-checked, .icon-checkbox-unchecked-3, .icon-checkbox-partial-3, .icon-radio-checked, .icon-radio-unchecked, .icon-circle, .icon-circle-2, .icon-crop, .icon-crop-2, .icon-vector, .icon-rulers, .icon-scissors, .icon-scissors-2, .icon-filter, .icon-filter-2, .icon-filter-3, .icon-font, .icon-font-size, .icon-type, .icon-text-height, .icon-text-width, .icon-height, .icon-width, .icon-bold, .icon-underline, .icon-italic, .icon-strikethrough, .icon-strikethrough-2, .icon-font-size-2, .icon-bold-2, .icon-underline-2, .icon-italic-2, .icon-sigma, .icon-nbsp, .icon-page-break, .icon-page-break-2, .icon-superscript, .icon-subscript, .icon-superscript-2, .icon-subscript-2, .icon-text-color, .icon-highlight, .icon-pagebreak, .icon-clear-formatting, .icon-table, .icon-table-2, .icon-insert-template, .icon-pilcrow, .icon-left-to-right, .icon-right-to-left, .icon-paragraph-left, .icon-paragraph-justify, .icon-paragraph-left-2, .icon-paragraph-center, .icon-paragraph-right, .icon-paragraph-justify-2, .icon-indent-increase, .icon-indent-decrease, .icon-paragraph-left-3, .icon-paragraph-center-2, .icon-paragraph-right-2, .icon-paragraph-justify-3, .icon-indent-increase-2, .icon-indent-decrease-2, .icon-share, .icon-new-tab, .icon-new-tab-2, .icon-popout, .icon-embed, .icon-code, .icon-seven-segment-1, .icon-seven-segment-2, .icon-seven-segment-3, .icon-seven-segment-4, .icon-seven-segment-5, .icon-seven-segment-6, .icon-seven-segment-7, .icon-seven-segment-8, .icon-seven-segment-9, .icon-share-2, .icon-share-3, .icon-mail, .icon-mail-2, .icon-mail-3, .icon-mail-4, .icon-google, .icon-google-plus, .icon-google-plus-2, .icon-google-plus-3, .icon-arrow-down-right-7, .icon-arrow-down-16, .icon-arrow-7, .icon-arrow-8, .icon-arrow-bottom, .icon-arrow-left-16, .icon-arrow-left-17, .icon-arrow-up-16, .icon-menu-10, .icon-menu-11, .icon-command, .icon-checkbox-checked-2, .icon-scissors-3, .icon-filter-4, .icon-strikethrough-3, .icon-omega, .icon-paragraph-center-3, .icon-paragraph-right-3, .icon-console, .icon-seven-segment-0, .icon-google-plus-4, .icon-google-drive, .icon-flickr, .icon-flickr-2, .icon-facebook, .icon-facebook-2, .icon-facebook-3, .icon-facebook-4, .icon-instagram, .icon-twitter, .icon-twitter-2, .icon-twitter-3, .icon-feed-2, .icon-feed-3, .icon-feed-4, .icon-youtube, .icon-youtube-2, .icon-vimeo, .icon-vimeo2, .icon-vimeo-2, .icon-lanyrd, .icon-flickr-3, .icon-flickr-4, .icon-picassa, .icon-picassa-2, .icon-dribbble, .icon-dribbble-2, .icon-dribbble-3, .icon-forrst, .icon-forrst-2, .icon-deviantart, .icon-deviantart-2, .icon-steam, .icon-steam-2, .icon-github, .icon-github-2, .icon-github-3, .icon-github-4, .icon-github-5, .icon-wordpress, .icon-wordpress-2, .icon-joomla, .icon-blogger, .icon-blogger-2, .icon-tumblr, .icon-tumblr-2, .icon-yahoo, .icon-tux, .icon-apple, .icon-finder, .icon-android, .icon-windows, .icon-windows8, .icon-soundcloud, .icon-soundcloud-2, .icon-skype, .icon-reddit, .icon-linkedin, .icon-lastfm, .icon-lastfm-2, .icon-delicious, .icon-stumbleupon, .icon-stumbleupon-2, .icon-stackoverflow, .icon-pinterest, .icon-pinterest-2, .icon-xing, .icon-xing-2, .icon-flattr, .icon-foursquare, .icon-foursquare-2, .icon-paypal, .icon-paypal-2, .icon-paypal-3, .icon-yelp, .icon-libreoffice, .icon-file-pdf, .icon-file-openoffice, .icon-file-word, .icon-file-excel, .icon-file-zip, .icon-file-powerpoint, .icon-file-xml, .icon-file-css, .icon-html5, .icon-html5-2, .icon-css3, .icon-chrome, .icon-firefox, .icon-IE, .icon-opera, .icon-safari, .icon-IcoMoon
+[class*='icon-'] {
+  font-family: icomoon-ultimate;
+  speak: none;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+  -webkit-font-smoothing: antialiased;
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+}
+
+/* makes sure icons active on rollover in links */
+a {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline-block;
+  }
+}
+
+/* makes the font 33% larger relative to the icon container */
+.icon-large:before {
+  vertical-align: -10%;
+  font-size: 1.3333333333333333em;
+}
+
+.button, .nav {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline;
+    /* keeps button heights with and without icons the same */
+    &.icon-large { line-height: .9em; }
+    &.icon-spin { display: inline-block; }
+  }
+}
+
+li, .nav li {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline-block;
+    width: 1.25em;
+    text-align: center;
+    &.icon-large {
+      /* increased font size for icon-large */
+      width: 1.5625em;
+    }
+  }
+}
+
+ul.icons {
+  list-style-type: none;
+  text-indent: -.75em;
+
+  li {
+    [class^="icon-"],
+    [class*=" icon-"] {
+      width: .75em;
+    }
+  }
+}
+
+.icon-muted {
+  color: $iconMuted;
+}
+
+// Icon Borders
+// -------------------------
+
+.icon-border {
+  border: solid 1px $borderColor;
+  padding: .2em .25em .15em;
+  @include border-radius(3px);
+}
+
+// Icon Sizes
+// -------------------------
+
+.icon-2x {
+  font-size: 2em;
+  &.icon-border {
+    border-width: 2px;
+    @include border-radius(0.25em);
+  }
+}
+.icon-3x {
+  font-size: 3em;
+  &.icon-border {
+    border-width: 3px;
+    @include border-radius(0.3125em);
+  }
+}
+.icon-4x {
+  font-size: 4em;
+  &.icon-border {
+    border-width: 4px;
+    @include border-radius(0.375em);
+  }
+}
+
+// Floats
+// -------------------------
+
+[class^="icon-"],
+[class*=" icon-"] {
+  &.left {
+    margin-right: 0.3em;
+  }
+  &.right {
+    margin-left: 0.3em;
+  }
+}
+
+.button {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.left, &.right {
+      &.icon-2x { margin-top: 0.18em; }
+    }
+    &.icon-spin.icon-large { line-height: 0.8em; }
+  }
+}
+
+.button.small {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    &.left, &.right {
+      &.icon-2x { margin-top: 0.25em; }
+    }
+  }
+}
+
+.button.large {
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-top: 0;
+    &.left, &.right {
+      &.icon-2x { margin-top: .005em; }
+    }
+    &.left.icon-2x { margin-right: 0.2em; }
+    &.right.icon-2x { margin-left: 0.2em; }
+  }
+}
+
+
+.icon-spin {
+  display: inline-block;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  100% { -moz-transform: rotate(359deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(359deg); }
+}
+@-o-keyframes spin {
+  0% { -o-transform: rotate(0deg); }
+  100% { -o-transform: rotate(359deg); }
+}
+@-ms-keyframes spin {
+  0% { -ms-transform: rotate(0deg); }
+  100% { -ms-transform: rotate(359deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(359deg); }
+}
+
+@-moz-document url-prefix() {
+  .icon-spin { height: 0.9em; }
+  .btn .icon-spin { height: auto; }
+  .icon-spin.icon-large { height: 1.25em; }
+  .btn .icon-spin.icon-large { height: 0.75em; }
+}

@@ -1,0 +1,10 @@
+@charset "utf-8";
+@import 'base';
+
+.slide {
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}

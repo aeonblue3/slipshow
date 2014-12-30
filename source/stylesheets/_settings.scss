@@ -1,0 +1,56 @@
+// Desktop
+$default-columns  : 12;
+$default-gutter   : 1em;
+
+// Tablet
+$tablet-columns   : 8;
+$tablet-gutter    : 1em;
+
+// Mobile
+$mobile-columns   : 4;
+$mobile-gutter    : 1em;
+
+$gutter-width     : $default-gutter;
+$grid-padding     : $gutter-width / 2;
+
+// breakpoints
+$container-width  : 75em;
+$mobile-size      : 30em;
+$tablet-size      : 48em;
+$mobile           : $mobile-columns $mobile-size;
+$tablet           : $tablet-columns $tablet-size;
+
+// Color Definitions
+$black            : #000;
+$white            : #FFF;
+$whiteSmoke       : #F5F5F5;
+$txtColor         : #222 !default;
+$grid-color       : rgba(215, 215, 215, 0.5);
+$font-set         : "Helvetica Neue", "Helvetica", Arial, sans-serif;
+$link_color       : #5087CA;
+$link_hover       : #366db1;
+$link_visited     : #5087CA;
+$link_active      : #5087CA;
+
+// Should column width be set to 100% at each new lower breakpoint?
+$reset_grid_at_breakpoint: true;
+
+
+// Relative Direction
+$relativeDirection    : 'left', 'right';
+
+// Text Direction
+$text-direction: ltr;
+
+// Tooltip Options
+$tootipBackgroundColor  : $black !default;
+$tooltipTextColor   : $white !default;
+
+// ---- LEGACY IE SUPPORT USING FILTERS ----
+//  Should IE filters be used or not?
+//  PROS: gradients, drop shadows etc will be handled by css.
+//  CONS: will harm the site performance badly, 
+//        especially on sites with heavy rendering and scripting. 
+$useIEFilters     : 0; 
+// might be 0 or 1. disabled by default.
+// ---- /LEGACY IE SUPPORT USING FILTERS ----

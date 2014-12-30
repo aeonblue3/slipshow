@@ -1,0 +1,197 @@
+// Floating left and right for each breakpoint, as well as clearing for each
+@each $direction in $relativeDirection {
+  .#{$direction} {
+    float: #{$direction} !important;
+    &:after {
+      content: "\0020";
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  }
+
+  @include desktop {
+    .desktop-#{$direction} {
+      float: #{$direction};
+      &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+    }
+    .desktop-clear {
+      float: none;
+      display: block;
+    }
+  }
+
+  @include tablet {
+    .tablet-#{$direction} {
+      display: inline;
+      float: #{$direction};
+      &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+    }
+   .tablet-clear {
+     float:none;
+     display: block;
+   }
+  }
+
+  @include mobile {
+    .mobile-#{$direction} {
+      display: inline;
+      float: #{$direction};
+      &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+    }
+    .mobile-clear {
+      float: none !important;
+      display: block;
+    }
+  }
+}
+
+@include tablet(min) {
+  .desktop-hide {
+    display: none !important;
+    visibility: hidden !important;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@include tablet {
+  .tablet-hide {
+    display: none !important;
+    visibility: hidden !important;
+    & + div, & + span, & + table, & + caption, & + tr, & + th, & + td, & + article, & + aside, & + figure, & + figcaption, & + footer, & + header, & + hgroup, & + menu, & + nav, & + section, & + summary,  {
+      margin-left: 0 !important;
+    }
+  }
+  .tablet-centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .tablet-no-float {
+    float: none;
+  }
+}
+
+@include mobile {
+  .mobile-hide {
+    display: none !important;
+    visibility: hidden !important;
+    & + div, & + span, & + table, & + caption, & + tr, & + th, & + td, & + article, & + aside, & + figure, & + figcaption, & + footer, & + header, & + hgroup, & + menu, & + nav, & + section, & + summary,  {
+      margin-left: 0 !important;
+    }
+  }
+  .mobile-centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mobile-no-float {
+    float: none;
+  }
+}
+@include mobile(min) {
+  .mobile-only {
+    display: none !important;
+    visibility: hidden !important;
+    & + div, & + span, & + table, & + caption, & + tr, & + th, & + td, & + article, & + aside, & + figure, & + figcaption, & + footer, & + header, & + hgroup, & + menu, & + nav, & + section, & + summary,  {
+      margin-left: 0 !important;
+    }
+  }
+}
+
+// Halves
+.half {
+  @include span-columns($default-columns / 2);
+  @include tablet {
+    float: none;
+    display: block;
+    margin: 0.3125em 0;
+    width: 100%;
+  }
+}
+
+// Thirds
+.one-third {
+  width: 33.333333333%;
+  float: left;
+  @include tablet {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+}
+.two-thirds {
+  width: 66.666666666%;
+  float: left;
+  @include tablet {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+}
+
+// Fourths
+.one-fourth {
+  width: 25%;
+  float: left;
+  @include tablet {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+}
+
+// Two-fourths is half
+.three-fourths {
+  width: 75%;
+  float: left;
+  @include tablet {
+    float: none;
+    display: block;
+    width: 100%;
+  }
+}
+
+@include tablet {
+  .tablet-half {
+    width: 50%;
+    float: left;
+    padding-left: 1em;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}
+
+@include mobile {
+  .tablet-half {
+    padding: 0;
+    width: 100%;
+    float: none;
+  }
+}
+
+@include mobile {
+  .mobile-half {
+    width: 50%;
+    float: left;
+  }
+}

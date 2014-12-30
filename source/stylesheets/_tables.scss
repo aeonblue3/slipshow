@@ -1,0 +1,39 @@
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.table {
+  width: 100%;
+  thead {
+    &.head {
+      background: $whiteSmoke;
+    }
+    tr {
+      border-bottom: 1px solid #ddd;
+      th {
+        font-weight: 500;
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+  tbody {
+    tr {
+      &.even {background: darken($white,3);}
+      &.odd {background: $white;}
+      &:hover {background:darken($white,5);}
+      td{
+        border-bottom: 1px solid #ccc;
+      }
+    }
+  }
+  tfoot {
+  }
+}
+thead, tbody, tfoot {
+  tr {
+    td, th {
+      padding: 0.625em;
+    }
+  }
+}

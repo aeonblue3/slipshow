@@ -1,0 +1,28 @@
+---
+title: New Coffee Slideshow
+---
+
+.container
+  .row
+    .span-12.panel
+      .slideshow-container
+        .slideshow
+          .slide.active
+            = image_tag "sunface.jpg"
+          .slide
+            = image_tag "scotch.jpg"
+          .slide
+            = image_tag "road.jpg"
+          .slide
+            = image_tag "skeptic-face.jpg"
+        .slideshow-controls
+          %ul.controls-list
+            %li
+              %a{class: 'prev', href: "#"}
+                %i.icon-backward
+            %li
+              %a{class: 'pause', href: "#"}
+                %i.icon-pause
+            %li
+              %a{class: 'next', href: "#"}
+                %i.icon-forward-2

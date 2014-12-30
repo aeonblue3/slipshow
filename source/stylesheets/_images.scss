@@ -1,0 +1,33 @@
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  border: 0;
+  -ms-intepolation-mode: bicubic;
+  &.round {
+    @include border-radius(31.25em);
+  }
+  &.framed {
+    padding: 4px;
+    border: 1px solid #eee;
+    background: #fff;
+    margin:0.0625em 0.0625em 0.625em 0.0625em;
+    @include border-radius(0.25em);
+  }
+}
+
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0;
+  div {
+    position: relative;
+    max-width: none;
+    height: auto;
+    img {
+      width: 100%;
+    }
+  }
+}
