@@ -2,4 +2,4 @@
 //= require jquery-ui/jquery-ui.min
 //= require lodash
 //= require bean
-//= require revolver
+//= require revolverjs

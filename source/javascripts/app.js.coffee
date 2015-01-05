@@ -1,4 +1,9 @@
 (($) ->
+  options =
+    animation: "fade",
+    speed: 4000,
+    
+
   slider_options =
     containerSelector: '.slideshow',
     slidesSelector: '.slide'

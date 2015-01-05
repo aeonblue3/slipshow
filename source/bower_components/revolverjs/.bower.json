@@ -13,15 +13,14 @@
     "lodash": "~2.4.0",
     "bean": "~1.0.4"
   },
-  "homepage": "https://github.com/johnnyfreeman/revolver",
+  "homepage": "https://github.com/revolverjs/revolverjs",
   "_release": "2.1.1",
   "_resolution": {
     "type": "version",
     "tag": "2.1.1",
     "commit": "0d82031f59b3e5b47bbbe069315e18556dd5aede"
   },
-  "_source": "git://github.com/johnnyfreeman/revolver.git",
+  "_source": "git://github.com/revolverjs/revolverjs.git",
   "_target": "~2.1.1",
-  "_originalSource": "revolver",
-  "_direct": true
+  "_originalSource": "revolverjs"
 }
