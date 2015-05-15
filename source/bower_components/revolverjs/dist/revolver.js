@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var Revolver;
+  var Revolver, addNamespaces;
 
   Revolver = function(options) {
     var slidesToAdd;
@@ -71,14 +71,52 @@
 
   Revolver.VERSION = '2.1.1';
 
-  Revolver.prototype.addSlide = function(slide) {
+  Revolver.prototype.addSlide = function(slide, index) {
     var currentPlusOne;
-    this.slides.push(slide);
+    if (!!~this.slides.indexOf(slide)) {
+      return this;
+    }
+    if (index) {
+      this.slides.splice(index, 0, slide);
+    } else {
+      this.slides.push(slide);
+    }
     this.numSlides = this.slides.length;
     this.lastSlide = (this.numSlides === 0 ? 0 : this.numSlides - 1);
     currentPlusOne = this.currentSlide + 1;
     this.nextSlide = (currentPlusOne > this.lastSlide ? 0 : currentPlusOne);
     return this;
+  };
+
+  Revolver.prototype.removeSlide = function(index) {
+    var currentPlusOne, new_slide, new_slide_index;
+    if (index < 0 || index >= this.numSlides) {
+      return void 0;
+    }
+    new_slide_index = index === this.lastSlide ? 0 : index + 1;
+    new_slide = this.slides[new_slide_index];
+    this.goTo(new_slide_index, this.options);
+    this.slides.splice(index, 1);
+    this.numSlides = this.slides.length;
+    this.lastSlide = (this.numSlides === 0 ? 0 : this.numSlides - 1);
+    this.currentSlide = this.slides.indexOf(new_slide);
+    currentPlusOne = this.currentSlide + 1;
+    this.nextSlide = (currentPlusOne > this.lastSlide ? 0 : currentPlusOne);
+    return this;
+  };
+
+  Revolver.prototype.moveSlide = function(src_index, dest_index) {
+    var temp;
+    if (dest_index >= this.slides.length) {
+      dest_index = 0;
+    }
+    if (dest_index < 0) {
+      dest_index = this.slides.length - 1;
+    }
+    temp = this.slides[dest_index];
+    this.slides[dest_index] = this.slides[src_index];
+    this.slides[src_index] = temp;
+    return this.goTo(dest_index, this.options);
   };
 
   Revolver.prototype.setOptions = function() {
@@ -171,7 +209,7 @@
 
   Revolver.prototype.goTo = function(i, options) {
     i = parseInt(i);
-    if (this.disabled === true || i === this.currentSlide) {
+    if (this.disabled === true || this.slides[i] === this.slides[this.currentSlide]) {
       return this;
     }
     this.nextSlide = i;
@@ -198,23 +236,41 @@
     return this.goTo(this.lastSlide, options);
   };
 
-  Revolver.prototype.on = function(eventName, callback) {
-    bean.on(this, 'revolver.' + eventName, _.bind(callback, this));
+  addNamespaces = function(eventString) {
+    var eventStringDelimiter, events, namespace;
+    namespace = 'revolver';
+    eventStringDelimiter = ' ';
+    events = eventString.split(eventStringDelimiter);
+    _.each(events, function(eventName, i) {
+      return events[i] = namespace.concat('.', events[i]);
+    });
+    return events.join(eventStringDelimiter);
+  };
+
+  Revolver.prototype.on = function(eventString, callback) {
+    callback = _.bind(callback, this);
+    eventString = addNamespaces(eventString);
+    bean.on(this, eventString, callback);
     return this;
   };
 
-  Revolver.prototype.one = function(eventName, callback) {
-    bean.one(this, 'revolver.' + eventName, _.bind(callback, this));
+  Revolver.prototype.one = function(eventString, callback) {
+    callback = _.bind(callback, this);
+    eventString = addNamespaces(eventString);
+    bean.one(this, eventString, callback);
     return this;
   };
 
-  Revolver.prototype.off = function(eventName, callback) {
-    bean.off(this, 'revolver.' + eventName, _.bind(callback, this));
+  Revolver.prototype.off = function(eventString, callback) {
+    callback = _.bind(callback, this);
+    eventString = addNamespaces(eventString);
+    bean.off(this, eventString, callback);
     return this;
   };
 
-  Revolver.prototype.trigger = function(eventName) {
-    bean.fire(this, 'revolver.' + eventName);
+  Revolver.prototype.trigger = function(eventString) {
+    eventString = addNamespaces(eventString);
+    bean.fire(this, eventString);
     return this;
   };
 
@@ -245,6 +301,11 @@
     return this;
   };
 
+  Revolver.deregisterTransition = function(name) {
+    delete Revolver.transitions[name];
+    return this;
+  };
+
   window.Revolver = Revolver;
 
   if (typeof window.define === "function" && window.define.amd) {
@@ -254,5 +315,3 @@
   }
 
 }).call(this);
-
-//# sourceMappingURL=../dist/revolver.js.map

@@ -24,7 +24,7 @@ module.exports = (grunt) ->
     coffee:
       revolver:
         options:
-          sourceMap: true
+          sourceMap: false
 
         files:
           'dist/revolver.js': 'src/revolver.coffee'
@@ -38,9 +38,6 @@ module.exports = (grunt) ->
     uglify:
       options:
         banner: '/*! <%= pkg.name %> <%= pkg.version %>  */\n'
-        sourceMap: 'dist/revolver.min.js.map'
-        sourceMappingURL: 'revolver.min.js.map'
-        sourceMapIn: 'dist/revolver.js.map'
 
       build:
         files:

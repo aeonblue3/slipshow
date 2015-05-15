@@ -10,7 +10,7 @@
 #          Y88b.                                                                             .88P
 #                                                                                           d88'
 # =========================================================================================================
-
+;
 'use strict'
 
 # constructor
@@ -104,9 +104,13 @@ Revolver.VERSION = '2.1.1'
 
 
 # add a new slide
-Revolver::addSlide = (slide) ->
+Revolver::addSlide = (slide, index) ->
+  if !!~@slides.indexOf slide then return this
   # add new slide to the slides array
-  @slides.push slide
+  if index
+    @slides.splice index, 0, slide
+  else
+    @slides.push slide
   # recalculate total number of slides
   @numSlides     = @slides.length
   # recalculate which is the last slide
@@ -116,6 +120,45 @@ Revolver::addSlide = (slide) ->
   @nextSlide     = (if currentPlusOne > @lastSlide then 0 else currentPlusOne)
   # return instance
   this
+
+# Remove an existing slide
+Revolver::removeSlide = (index) ->
+  return undefined if index < 0 or index >= @numSlides
+
+  new_slide_index = if index is @lastSlide then 0 else index + 1
+
+  new_slide = @slides[new_slide_index]
+
+  @goTo new_slide_index, @options
+
+  @slides.splice index, 1
+
+  # recalculate total number of slides
+  @numSlides     = @slides.length
+  # recalculate which is the last slide
+  @lastSlide     = (if @numSlides is 0 then 0 else @numSlides - 1)
+  # recalculate which is the next slide
+  @currentSlide  = @slides.indexOf new_slide
+  currentPlusOne = @currentSlide + 1
+  @nextSlide     = (if currentPlusOne > @lastSlide then 0 else currentPlusOne)
+  # return instance
+  this
+
+# Move a slide in slides array
+Revolver::moveSlide = (src_index, dest_index) ->
+  # If the destination index is greater than the array length, 0
+  if dest_index >= @slides.length then dest_index = 0
+  # If the destination index is less than 0, use array length - 1
+  if dest_index < 0 then dest_index = @slides.length - 1
+
+  # Copy slide in destination spot
+  temp = @slides[dest_index]
+  # Move source slide to destination
+  @slides[dest_index] = @slides[src_index]
+  # Move temp to old src_index
+  @slides[src_index] = temp
+  # Goto the new destination
+  @goTo dest_index, @options
 
 
 # set options
@@ -245,7 +288,7 @@ Revolver::goTo = (i, options) ->
   # keep transition arithmetic from breaking
   i = parseInt(i)
   # bail out if already on the intended slide
-  return this  if @disabled is true or i is @currentSlide
+  return this  if @disabled is true or @slides[i] is @slides[@currentSlide]
   # queue up i as the next slide
   @nextSlide = i
   # if slider is playing, pause() and play()
@@ -271,27 +314,53 @@ Revolver::last = (options) -> @goTo @lastSlide, options
 
 # EVENTS
 
+addNamespaces = (eventString) ->
+  namespace = 'revolver'
+  eventStringDelimiter = ' '
+  events = eventString.split eventStringDelimiter
+  _.each events, (eventName, i) ->
+    events[i] = namespace.concat '.', events[i]
+  events.join eventStringDelimiter
+
 # attach an event listener
-Revolver::on = (eventName, callback) ->
-  bean.on this, 'revolver.' + eventName, _.bind(callback, this)
+Revolver::on = (eventString, callback) ->
+  # bind revolver instance to callback
+  callback = _.bind callback, this
+  # add revolver namespace to event(s)
+  eventString = addNamespaces eventString
+  # call bean.on
+  bean.on this, eventString, callback
   # return instance
   this
 
 # alias for on() except that the handler will removed after the first execution
-Revolver::one = (eventName, callback) ->
-  bean.one this, 'revolver.' + eventName, _.bind(callback, this)
+Revolver::one = (eventString, callback) ->
+  # bind revolver instance to callback
+  callback = _.bind callback, this
+  # add revolver namespace to event(s)
+  eventString = addNamespaces eventString
+  # call bean.on
+  bean.one this, eventString, callback
   # return instance
   this
 
 # remove an event listener using
-Revolver::off = (eventName, callback) ->
-  bean.off this, 'revolver.' + eventName, _.bind(callback, this)
+Revolver::off = (eventString, callback) ->
+  # bind revolver instance to callback
+  callback = _.bind callback, this
+  # add revolver namespace to event(s)
+  eventString = addNamespaces eventString
+  # call bean.on
+  bean.off this, eventString, callback
   # return instance
   this
 
 # execute all listeners for the given event
-Revolver::trigger = (eventName) ->
-  bean.fire this, 'revolver.' + eventName
+Revolver::trigger = (eventString) ->
+  # add revolver namespace to event(s)
+  eventString = addNamespaces eventString
+  # call bean.on
+  bean.fire this, eventString
   # return instance
   this
 
@@ -329,6 +398,10 @@ Revolver.transitions['default'] = (options) ->
 
 Revolver.registerTransition = (name, fn) ->
   Revolver.transitions[name] = fn
+  this
+
+Revolver.deregisterTransition = (name) ->
+  delete Revolver.transitions[name]
   this
 
 

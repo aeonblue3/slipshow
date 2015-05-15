@@ -2,31 +2,31 @@
   "name": "revolverjs",
   "description": "A javascript library for building your own content slider.",
   "version": "2.1.1",
-  "homepage": "https://github.com/johnnyfreeman/revolverjs",
+  "homepage": "https://github.com/aeonblue3/revolverjs",
   "author": {
     "name": "Johnny Freeman",
     "email": "prsjohnny@gmail.com",
-    "url": "http://github.com/johnnyfreeman"
+    "url": "http://github.com/aeonblue3"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/johnnyfreeman/revolverjs.git"
+    "url": "git://github.com/aeonblue3/revolverjs.git"
   },
   "bugs": {
-    "url": "https://github.com/johnnyfreeman/revolverjs/issues"
+    "url": "https://github.com/aeonblue3/revolverjs/issues"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-coffee": "~0.8.0",
     "chai": "~1.8.1",
-    "grunt-mocha": "~0.4.7",
-    "grunt-bower-task": "~0.3.4",
-    "grunt-contrib-clean": "~0.5.0",
+    "grunt": "~0.4.2",
+    "grunt-bower-task": "^0.4.0",
     "grunt-cli": "~0.1.11",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.8.0",
+    "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-shell": "~0.6.1",
-    "grunt-coffeelint": "0.0.8"
+    "grunt-mocha": "~0.4.7",
+    "grunt-shell": "~0.6.1"
   },
   "main": "dist/revolver.min.js",
   "engines": {

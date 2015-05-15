@@ -1,9 +1,8 @@
 {
   "name": "revolverjs",
-  "version": "2.1.1",
   "repository": {
     "type": "git",
-    "url": "git://github.com/johnnyfreeman/revolver.git"
+    "url": "git://github.com/aeonblue3/revolver.git"
   },
   "main": "dist/revolver.min.js",
   "ignore": [
@@ -13,14 +12,13 @@
     "lodash": "~2.4.0",
     "bean": "~1.0.4"
   },
-  "homepage": "https://github.com/revolverjs/revolverjs",
-  "_release": "2.1.1",
+  "homepage": "https://github.com/aeonblue3/revolver",
+  "_release": "e885c67d5c",
   "_resolution": {
-    "type": "version",
-    "tag": "2.1.1",
-    "commit": "0d82031f59b3e5b47bbbe069315e18556dd5aede"
+    "type": "commit",
+    "commit": "e885c67d5c44e3c4a554f36373e2c855c3c19f11"
   },
-  "_source": "git://github.com/revolverjs/revolverjs.git",
-  "_target": "~2.1.1",
-  "_originalSource": "revolverjs"
+  "_source": "https://github.com/aeonblue3/revolver.git",
+  "_target": "e885c67d5c44e3c4a554f36373e2c855c3c19f11",
+  "_originalSource": "https://github.com/aeonblue3/revolver.git"
 }

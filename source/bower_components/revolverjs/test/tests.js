@@ -20,15 +20,107 @@
         slider.addSlide(document.createElement('div'));
         return assert.strictEqual(slider.slides.length, numSlides + 1);
       });
+      test('adds slide at correct position', function() {
+        var slide;
+        slide = document.createElement('div');
+        slider.addSlide(slide, 1);
+        return assert.strictEqual(slider.slides.indexOf(slide), 1);
+      });
       test('recalculates this.numSlides correctly', function() {
         slider.addSlide(document.createElement('div'));
         return assert.strictEqual(slider.numSlides, slider.slides.length);
       });
-      return test('recalculates this.nextSlide correctly', function() {
+      test('recalculates this.nextSlide correctly', function() {
         var nextSlide;
         nextSlide = (slider.currentSlide === slider.lastSlide ? 0 : slider.currentSlide + 1);
         slider.addSlide(document.createElement('div'));
         return assert.strictEqual(slider.nextSlide, nextSlide);
+      });
+      return test('does not add slide if already added', function() {
+        var numSlides, slide;
+        numSlides = slider.slides.length;
+        slide = document.getElementsByClassName('slide')[0];
+        slider.addSlide(slide);
+        return assert.strictEqual(slider.slides.length, numSlides);
+      });
+    });
+    suite('#removeSlide()', function() {
+      test('remove a slide from this.slides array', function() {
+        var numSlides;
+        numSlides = slider.slides.length;
+        slider.removeSlide(0);
+        return assert.strictEqual(slider.slides.length, numSlides - 1);
+      });
+      test('remove the right slide from this.slides array', function() {
+        var slide, slideIndex;
+        slideIndex = 1;
+        slide = document.getElementsByClassName('slide')[slideIndex];
+        slider.removeSlide(slideIndex);
+        return assert.strictEqual(slider.slides.indexOf(slide), -1);
+      });
+      test('recalculates this.numSlides correctly', function() {
+        slider.removeSlide(1);
+        return assert.strictEqual(slider.numSlides, slider.slides.length);
+      });
+      test('recalculates this.nextSlide correctly', function() {
+        var nextSlide;
+        nextSlide = (slider.currentSlide === slider.lastSlide ? 0 : slider.currentSlide + 1);
+        slider.removeSlide(0);
+        return assert.strictEqual(slider.nextSlide, nextSlide);
+      });
+      test('recalculates this.currentSlide correctly', function() {
+        var numSlides;
+        numSlides = slider.slides.length;
+        slider.removeSlide(0);
+        return assert.strictEqual(slider.currentSlide, 0);
+      });
+      return test('activate next slide upon delete', function() {
+        var slide;
+        slide = slider.slides[1];
+        slider.removeSlide(0);
+        return assert.strictEqual(slider.slides.indexOf(slide), 0);
+      });
+    });
+    suite('#moveSlide()', function() {
+      test('increment slide position in this.slides array', function() {
+        var slide;
+        slide = slider.slides[1];
+        slider.moveSlide(1, 2);
+        return assert.strictEqual(slider.slides.indexOf(slide), 2);
+      });
+      test('decrement slide position in this.slides array', function() {
+        var slide;
+        slide = slider.slides[2];
+        slider.moveSlide(2, 1);
+        return assert.strictEqual(slider.slides.indexOf(slide), 1);
+      });
+      test('last slide moves to first', function() {
+        var slide;
+        slide = slider.slides[3];
+        slider.moveSlide(3, 0);
+        return assert.strictEqual(slider.slides.indexOf(slide), 0);
+      });
+      test('first slide moves to last', function() {
+        var slide;
+        slide = slider.slides[0];
+        slider.moveSlide(0, 3);
+        return assert.strictEqual(slider.slides.indexOf(slide), 3);
+      });
+      test('last slide moves to first when destination is out of bounds', function() {
+        var slide;
+        slide = slider.slides[3];
+        slider.moveSlide(3, 4);
+        return assert.strictEqual(slider.slides.indexOf(slide), 0);
+      });
+      test('first slide moves to last when destination is less than zero', function() {
+        var slide;
+        slide = slider.slides[0];
+        slider.moveSlide(0, -1);
+        return assert.strictEqual(slider.slides.indexOf(slide), 3);
+      });
+      return test('currentSlide points to new slide position', function() {
+        slider.moveSlide(0, 1);
+        return assert.strictEqual(slider.currentSlide, 1);
       });
     });
     suite('#changeStatus()', function() {
@@ -134,25 +226,48 @@
         slider.goTo(slider.lastSlide);
         return assert.strictEqual(slider.currentSlide, 0);
       });
-      return test('goes to intended slide', function() {
+      test('goes to intended slide', function() {
         var nextSlide;
         nextSlide = slider.nextSlide;
         slider.goTo(nextSlide);
         return assert.strictEqual(slider.currentSlide, nextSlide);
       });
+      return test('recalculates this.nextSlide correctly', function() {
+        var nextSlide;
+        nextSlide = slider.nextSlide;
+        slider.goTo(nextSlide);
+        return assert.strictEqual(slider.nextSlide, nextSlide + 1);
+      });
     });
   });
 
   suite('Static Methods', function() {
-    return suite('#registerTransition()', function() {
-      var handler, result;
+    suite('#registerTransition()', function() {
+      var handler, new_handler, result;
       handler = function() {};
+      new_handler = function() {
+        return true;
+      };
       result = Revolver.registerTransition('test', handler);
       test('saves the handler in the transitions namespace', function() {
         return assert.strictEqual(Revolver.transitions.test, handler);
       });
-      return test('returns the Revolver global object', function() {
+      test('returns the Revolver global object', function() {
         return assert.strictEqual(result, Revolver);
+      });
+      return test('update transition to new handler', function() {
+        var new_result;
+        new_result = Revolver.registerTransition('test', new_handler);
+        return assert.strictEqual(Revolver.transitions.test, new_handler);
+      });
+    });
+    return suite('#deregisterTransition()', function() {
+      var handler, result;
+      handler = function() {};
+      result = Revolver.registerTransition('transient', handler);
+      return test('deregister the transition from transitions namespace', function() {
+        Revolver.deregisterTransition('transient');
+        return assert.isUndefined(Revolver.transitions.transient, 'no test defined');
       });
     });
   });

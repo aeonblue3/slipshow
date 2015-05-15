@@ -5,28 +5,38 @@ body {
   background: transparent url(image-path('background.png')) repeat top left;
 }
 
-.panel {
-  padding: 25px;
-}
-.slideshow-container, .slideshow, .slide {
-  height: auto;
+.slideshow-container {}
+.slideshow {}
+.slides_container {
+  position: relative;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
 
 .slide {
   display: none;
   width: auto;
-
-  img {
-    max-height: 500px;
-  }
+  padding: 10px;
 
   &.active {
     display: block;
+  }
+  &, & > * {
+    text-align: center;
   }
 }
 
 i {
   &[class*="icon"] {
     font-size: 4em;
+  }
+}
+li {
+  &.icon-circle {
+    &.active {
+      &::before {
+        content: "\e42f" !important;
+      }
+    }
   }
 }

@@ -3,30 +3,54 @@ title: New Coffee Slideshow
 ---
 
 .container
-  .row
-    .span-12
-      %h1.center
-        CoffeeCup Slideshow
-  .row
-    .span-12
-      .slideshow-container.centered
-        .slideshow.panel
-          .slide.active
-            = image_tag "sunface.jpg"
-          .slide
-            = image_tag "scotch.jpg"
-          .slide
-            = image_tag "road.jpg"
-          .slide
-            = image_tag "skeptic-face.jpg"
-  .slideshow-controls
-    .row
-      .span-4.tablet-span-4.mobile-span-4
-        %a.prev{href: "#"}
-          %i.icon-backward
-      .span-4.tablet-span-4.mobile-span-4.center
-        %a.pause{href: "#"}
-          %i.icon-pause
-      .span-4.tablet-span-4.mobile-span-4
-        %a.next.right{href: "#"}
-          %i.icon-forward-2
+
+  .slideshow_container
+    .slideshow{data: {autoplay: "false", rotationspeed:"1500"}}
+      .slides_container
+        .slide.active
+          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/horsehead-nebula.jpg", alt: "Horse Head Nebula"}
+          %p
+            Horse Head Nebula
+        .slide
+          = image_tag "scotch.jpg"
+          %p Scotch
+        .slide
+          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/pillars-nebula.png", alt: "Pillars Nebula"}
+          %p
+            Pillars Nebula
+        .slide
+          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/ngc-2264.jpg", alt: "More Space"}
+          %p
+            More Space
+        .slide
+          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/cone-nebula.jpg", alt: "Cone Nebula"}
+          %p
+            Cone Nebula
+        .slide
+          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/eagle-nebula.jpg", alt: "Eagle Nebula"}
+          %p
+            Eagle Nebula
+      %ul.slides_indicator
+        %li.slide_node.icon-circle.active
+          %a{href:"#"}
+        %li.slide_node.icon-circle
+          %a{href:"#"}
+        %li.slide_node.icon-circle
+          %a{href:"#"}
+        %li.slide_node.icon-circle
+          %a{href:"#"}
+        %li.slide_node.icon-circle
+          %a{href:"#"}
+        %li.slide_node.icon-circle
+          %a{href:"#"}
+      .slideshow-controls
+        .row
+          .span-4.tablet-span-4.mobile-span-4
+            %a.prev{href: "#"}
+              %i.icon-backward
+          .span-4.tablet-span-4.mobile-span-4.center
+            %a.pause{href: "#"}
+              %i.icon-pause
+          .span-4.tablet-span-4.mobile-span-4
+            %a.next.right{href: "#"}
+              %i.icon-forward-2
