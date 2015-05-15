@@ -20,6 +20,7 @@
     "jquery-ui": "~1.11.2",
     "bean": "~1.0.4",
     "lodash": "~2.4.0",
-    "revolverjs": "~2.1.1"
+    "revolverjs": "https://github.com/aeonblue3/revolver.git#e885c67d5c44e3c4a554f36373e2c855c3c19f11",
+    "velocity": "~1.2.2"
   }
 }
