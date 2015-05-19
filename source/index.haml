@@ -2,55 +2,63 @@
 title: New Coffee Slideshow
 ---
 
-.container
-
-  .slideshow_container
-    .slideshow{data: {autoplay: "false", rotationspeed:"1500"}}
-      .slides_container
-        .slide.active
-          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/horsehead-nebula.jpg", alt: "Horse Head Nebula"}
-          %p
-            Horse Head Nebula
-        .slide
-          = image_tag "scotch.jpg"
-          %p Scotch
-        .slide
-          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/pillars-nebula.png", alt: "Pillars Nebula"}
-          %p
-            Pillars Nebula
-        .slide
-          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/ngc-2264.jpg", alt: "More Space"}
-          %p
-            More Space
-        .slide
-          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/cone-nebula.jpg", alt: "Cone Nebula"}
-          %p
-            Cone Nebula
-        .slide
-          %img.slideshow-image{src: "http://www.chrisneitzer.com/storage/eagle-nebula.jpg", alt: "Eagle Nebula"}
-          %p
-            Eagle Nebula
-      %ul.slides_indicator
-        %li.slide_node.icon-circle.active
-          %a{href:"#"}
-        %li.slide_node.icon-circle
-          %a{href:"#"}
-        %li.slide_node.icon-circle
-          %a{href:"#"}
-        %li.slide_node.icon-circle
-          %a{href:"#"}
-        %li.slide_node.icon-circle
-          %a{href:"#"}
-        %li.slide_node.icon-circle
-          %a{href:"#"}
-      .slideshow-controls
-        .row
-          .span-4.tablet-span-4.mobile-span-4
-            %a.prev{href: "#"}
-              %i.icon-backward
-          .span-4.tablet-span-4.mobile-span-4.center
-            %a.pause{href: "#"}
-              %i.icon-pause
-          .span-4.tablet-span-4.mobile-span-4
-            %a.next.right{href: "#"}
-              %i.icon-forward-2
+.slideshow_container.slideshow-container-1
+  .slideshow{data: {autoplay: "false", rotationspeed:"2500", transition: "fade"}}
+    .slides_container
+      .slide.active
+        .responsive-image.centered-image
+          %div
+            %img.slideshow-image{src: "./images/horsehead-nebula.jpg?id=5&amp;cache=1432051815933", alt: "Horse Head Nebula"}
+        %p.centered-text
+          Horse Head Nebula
+      .slide
+        .responsive-image.centered-image
+          %div
+            %img.slideshow-image{src: "http://dailyderbi.com/wp-content/uploads/2011/04/11-scion-fr-s-concept-ny.jpg", alt: "Pillars Nebula"}
+        %p.centered-text
+          Pillars Nebula
+      .slide
+        .responsive-image.centered-image
+          %div
+            %img.slideshow-image{src: "./images/ngc-2264.jpg?id=6&amp;cache=1432051934665", alt: "More Space"}
+        %p.centered-text
+          More Space
+      .slide
+        .responsive-image.centered-image
+          %div
+            %img.slideshow-image{src: "./images/pyja47.jpg?id=8&amp;cache=1432052011684", alt: "Cone Nebula"}
+        %p.centered-text
+          Cone Nebula
+      .slide
+        .responsive-image.centered-image
+          %div
+            %img.slideshow-image{src: "./images/eagle-nebula.jpg?id=4&amp;cache=1432052026222", alt: "Eagle Nebula"}
+        %p.centered-text
+          Eagle Nebula
+    %ul.slides_indicator
+      %li.slide_node.icon-circle.active
+        %a{href:"#"}
+      %li.slide_node.icon-circle
+        %a{href:"#"}
+      %li.slide_node.icon-circle
+        %a{href:"#"}
+      %li.slide_node.icon-circle
+        %a{href:"#"}
+      %li.slide_node.icon-circle
+        %a{href:"#"}
+    .container.container-rpg
+      .coffee-slider-first.first-control-1
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/first.png", alt: ""}
+      .coffee-slider-previous.previous-control-1
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/previous.png", alt: ""}
+      .coffee-slider-stop.stop-control-1
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/stop.png", alt: ""}
+      .coffee-slider-play.play-control-1
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/play.png", alt: ""}
+      .coffee-slider-next.next-control-1
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/next.png", alt: ""}
+      .coffee-slider-last.inline-control
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/last.png", alt: ""}
+      .coffee-slider-restart.inline-control
+        %img{src: "http://responsive-slider.coffeecup.com/storage/icons/minimal/restart.png", alt: ""}
+.test-box

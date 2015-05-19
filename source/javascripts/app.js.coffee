@@ -1,26 +1,23 @@
 Revolver.registerTransition 'fade', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
-  $container = $(@container);
-  $nextSlide = $(@slides[@nextSlide]);
-  $prevSlide = $(@slides[@previousSlide]);
-  $currentSlide = $(@slides[@currentSlide]);
-  if $('.slides_container')[0].style.height is ""
-    $('.slides_container').height $('.slide.active').height()
-  $('.slides_container').height $nextSlide.height()
+  $container = $(@container)
+  $nextSlide = $(@slides[@nextSlide])
+  $prevSlide = $(@slides[@previousSlide])
+  $currentSlide = $(@slides[@currentSlide])
   $currentSlide.velocity 'fadeOut',
     duration: 500,
-    complete: () ->
-      $nextSlide.velocity 'fadeIn',
-          duration: 500,
-          complete: complete
+  $nextSlide.delay 499
+    .velocity 'fadeIn',
+      duration: 500,
+      complete: complete
 
 Revolver.registerTransition 'slide', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $nextSlide = $(@slides[@nextSlide])
   $currentSlide = $(@slides[@currentSlide])
   if $('.slides_container')[0].style.height is ""
-    $('.slides_container').height $('.slide.active').height()
-  $('.slides_container').height $nextSlide.height()
+    $('.slides_container').outerHeight $('.slide.active').outerHeight()
+  $('.slides_container').outerHeight $nextSlide.outerHeight()
   $currentSlide.velocity 'transition.slideLeftBigOut',
     duration: 500
     complete: () ->
@@ -32,10 +29,10 @@ $(document).ready () ->
   options =
     containerSelector: '.slides_container',
     slidesSelector: '.slide',
-    autoPlay: false,
-    speed: 4000,
+    autoPlay: $(".slideshow").data('autoplay') || false,
+    speed: $(".slideshow").data('rotationspeed') || "3500",
     transition: 
-      name: "fade"
+      name: $(".slideshow").data('transition') || "default"
   
 
   mySlider = new Revolver options
@@ -54,12 +51,18 @@ $(document).ready () ->
       $icon.attr('class', 'icon-pause')
       mySlider.play()
 
-  $(".prev, .next").click (e) ->
+  regex = new RegExp "(first|previous|stop|play|next|last|restart)", "i"
+  $('[class*="coffee-slider-"]').click (e)->
     e.preventDefault()
+    command = $(this).attr('class').match(regex)[0]
+    mySlider[command]()
 
-    action = if $(this).attr('class') is 'prev' then "previous" else "next"
-    mySlider[action]()
   mySlider.on "transitionComplete", () ->
     nodes = $('ul.slides_indicator').children()
     nodes.removeClass 'active'
     return $(nodes.get(this.currentSlide)).addClass('active')
+
+  $(".slide_node a").click (e) ->
+    e.preventDefault()
+    index = $(this).parent().index()
+    if index <= mySlider.lastSlide then mySlider.goTo index
