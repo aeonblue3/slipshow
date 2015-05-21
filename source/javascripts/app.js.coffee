@@ -8,30 +8,19 @@ methods =
 
 Revolver.registerTransition 'fade', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
-  $container = $(@container)
   $nextSlide = $(@slides[@nextSlide])
-  $prevSlide = $(@slides[@previousSlide])
   $currentSlide = $(@slides[@currentSlide])
 
-  # next_slide_width = parseInt $nextSlide.outerWidth(true), 10
-  # container_width = parseInt $container.outerWidth(), 10
-  # next_slide_height = (parseInt $nextSlide.outerHeight(true), 10)
-  # height = Math.round((container_width * next_slide_height) / next_slide_width).toString() + 'px'
-  $nextSlide.css
-    'position': 'relative'
-    'float': 'left'
-    'z-index': @nextSlide
-
-  $nextSlide.velocity 'fadeIn',
+  $currentSlide.velocity opacity: 0,
+    easing: 'ease-out'
     duration: 500
-  $currentSlide.velocity 'fadeOut',
-    duration: 500,
-    complete: () ->
-      complete()
-      $currentSlide.css
-        'position': 'absolute'
-        'float': 'none'
-
+  .css {position: 'absolute', float: 'none'}
+  $nextSlide
+  .css {position: 'relative', float: 'left', z_index: @currentSlide}
+  .velocity opacity: 1,
+    easing: 'ease-in'
+    duration: 500
+    complete: complete()
 
 Revolver.registerTransition 'slide', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
