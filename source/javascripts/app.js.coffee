@@ -1,15 +1,37 @@
+methods =
+  resizeContainer: () ->
+    next_slide =
+      width: parseInt $(@slides[@currentSlide]).outerWidth(), 10
+      height: parseInt $(@slides[@currentSlide]).outerHeight(), 10
+    container_width = parseInt $(@container).outerWidth(), 10
+    height = (container_width * next_slide.height) / next_slide.width
+
 Revolver.registerTransition 'fade', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $container = $(@container)
   $nextSlide = $(@slides[@nextSlide])
   $prevSlide = $(@slides[@previousSlide])
   $currentSlide = $(@slides[@currentSlide])
+
+  # next_slide_width = parseInt $nextSlide.outerWidth(true), 10
+  # container_width = parseInt $container.outerWidth(), 10
+  # next_slide_height = (parseInt $nextSlide.outerHeight(true), 10)
+  # height = Math.round((container_width * next_slide_height) / next_slide_width).toString() + 'px'
+  $nextSlide.css
+    'position': 'relative'
+    'float': 'left'
+    'z-index': @nextSlide
+
+  $nextSlide.velocity 'fadeIn',
+    duration: 500
   $currentSlide.velocity 'fadeOut',
     duration: 500,
-  $nextSlide.delay 499
-    .velocity 'fadeIn',
-      duration: 500,
-      complete: complete
+    complete: () ->
+      complete()
+      $currentSlide.css
+        'position': 'absolute'
+        'float': 'none'
+
 
 Revolver.registerTransition 'slide', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
@@ -31,9 +53,9 @@ $(document).ready () ->
     slidesSelector: '.slide',
     autoPlay: $(".slideshow").data('autoplay') || false,
     speed: $(".slideshow").data('rotationspeed') || "3500",
-    transition: 
+    transition:
       name: $(".slideshow").data('transition') || "default"
-  
+
 
   mySlider = new Revolver options
 
