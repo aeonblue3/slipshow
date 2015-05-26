@@ -1,40 +1,34 @@
-methods =
-  resizeContainer: () ->
-    next_slide =
-      width: parseInt $(@slides[@currentSlide]).outerWidth(), 10
-      height: parseInt $(@slides[@currentSlide]).outerHeight(), 10
-    container_width = parseInt $(@container).outerWidth(), 10
-    height = (container_width * next_slide.height) / next_slide.width
-
 Revolver.registerTransition 'fade', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $nextSlide = $(@slides[@nextSlide])
   $currentSlide = $(@slides[@currentSlide])
 
-  $currentSlide.velocity opacity: 0,
-    easing: 'ease-out'
-    duration: 500
-  .css {position: 'absolute', float: 'none'}
+  $currentSlide
+    .velocity opacity: 0,
+      easing: 'ease-out'
+      duration: 500
+    .removeClass 'active'
+
   $nextSlide
-  .css {position: 'relative', float: 'left', z_index: @currentSlide}
-  .velocity opacity: 1,
-    easing: 'ease-in'
-    duration: 500
-    complete: complete()
+    .velocity opacity: 1,
+      easing: 'ease-in'
+      duration: 500
+      complete: complete
+    .addClass 'active'
+  @
 
 Revolver.registerTransition 'slide', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $nextSlide = $(@slides[@nextSlide])
   $currentSlide = $(@slides[@currentSlide])
-  if $('.slides_container')[0].style.height is ""
-    $('.slides_container').outerHeight $('.slide.active').outerHeight()
-  $('.slides_container').outerHeight $nextSlide.outerHeight()
-  $currentSlide.velocity 'transition.slideLeftBigOut',
-    duration: 500
-    complete: () ->
-      $nextSlide.velocity 'transition.slideRightBigIn',
-        duration: 500
-        complete: complete
+
+  $currentSlide
+    .removeClass 'active'
+    .velocity 'transition.slideLeftBigOut'
+  $nextSlide
+    .addClass 'active'
+    .velocity 'transition.slideRightBigIn',
+      complete: complete
 
 $(document).ready () ->
   options =
