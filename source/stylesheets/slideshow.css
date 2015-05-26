@@ -779,52 +779,25 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 .slide {
   position: absolute;
-  float: none;
   opacity: 0;
-  display: block;
+  display: none;
 }
 .slide.active {
-  opacity: 1;
   position: relative;
-  float: left;
-}
-.slides_indicator {
-  border: 1px solid #dddddd;
+  display: block;
 }
 .slides_indicator .slide_node {
   display: inline;
-  border: 1px solid #aaaaaa;
 }
 .slides_indicator .slide_node a {
-  font-family: "coffeecup-font-icons";
-  speak: none;
-  -webkit-font-smoothing: antialiased;
-  vertical-align: baseline;
+  color: green;
 }
-.slides_indicator .slide_node a:before {
-  text-decoration: inherit;
-  display: inline-block;
-  speak: none;
-}
-.slides_indicator .slide_node.circle a:before {
-  content: "\ee74";
-}
-.slides_indicator .slide_node.circle.active a:before {
-  content: "\ee75";
-}
-.slides_indicator .slide_node.circles a:before {
-  content: "\ee76";
-}
-.slides_indicator .slide_node.circles.active a:before {
-  content: "\ee77";
-}
-.slides_indicator .slide_node.circle.active,
-.slides_indicator .slide_node.circles.active {
-  background-color: rgba(0, 0, 0, 0.3);
+.slides_indicator .slide_node.active a{
+  color: red;
 }
 .slide_node a {
   color: #222222;
-  font-size: 8px;
+  font-size: 16px;
   font-weight: normal;
   font-style: normal;
   text-decoration: inherit;

@@ -1,36 +1,48 @@
+Revolver.registerTransition 'default', (options, done) ->
+  $(@slides).removeClass 'active'
+  $(@slides[@nextSlide]).addClass 'active'
+  @trigger 'transitionComplete'
+  @
+
 Revolver.registerTransition 'fade', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $nextSlide = $(@slides[@nextSlide])
   $currentSlide = $(@slides[@currentSlide])
+  $slides = $(@slides)
 
   $currentSlide
     .velocity opacity: 0,
       easing: 'ease-out'
       duration: 500
-    .removeClass 'active'
-
-  $nextSlide
-    .velocity opacity: 1,
-      easing: 'ease-in'
-      duration: 500
-      complete: complete
-    .addClass 'active'
+      complete: () ->
+        $slides.removeClass 'active'
+        $nextSlide
+          .addClass 'active'
+          .velocity opacity: 1,
+            easing: 'ease-in'
+            duration: 500
+            complete: () ->
+              complete()
   @
 
 Revolver.registerTransition 'slide', (options, done) ->
   complete = @trigger.bind @, 'transitionComplete'
   $nextSlide = $(@slides[@nextSlide])
   $currentSlide = $(@slides[@currentSlide])
+  $slides = $(@slides)
 
   $currentSlide
-    .removeClass 'active'
-    .velocity 'transition.slideLeftBigOut'
-  $nextSlide
-    .addClass 'active'
-    .velocity 'transition.slideRightBigIn',
-      complete: complete
+    .velocity 'transition.slideLeftBigOut',
+      complete: () ->
+        $slides.removeClass 'active'
+        $nextSlide
+          .addClass 'active'
+          .velocity 'transition.slideRightBigIn',
+            complete: complete
+  @
 
 $(document).ready () ->
+  $(".slide.active").css 'opacity', 1
   options =
     containerSelector: '.slides_container',
     slidesSelector: '.slide',
@@ -62,10 +74,10 @@ $(document).ready () ->
     command = $(this).attr('class').match(regex)[0]
     mySlider[command]()
 
-  mySlider.on "transitionComplete", () ->
+  mySlider.on "Revolver.transitionComplete", () ->
     nodes = $('ul.slides_indicator').children()
     nodes.removeClass 'active'
-    return $(nodes.get(this.currentSlide)).addClass('active')
+    return $(nodes.get($('.slide.active').index())).addClass('active')
 
   $(".slide_node a").click (e) ->
     e.preventDefault()

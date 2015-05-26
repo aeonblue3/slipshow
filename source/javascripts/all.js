@@ -1,4 +1,4 @@
-//= require jquery/dist/jquery.min
+//= require jquery/jquery.min
 //= require lodash
 //= require bean
 //= require revolverjs
